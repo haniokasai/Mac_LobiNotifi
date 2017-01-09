@@ -11,3 +11,7 @@ easy_install pip
 pip install pycurl
 
 API:https://github.com/NewDelion/LobiAPI-PHP
+
+Ubuntu
+apt install python python-pip libnotify-bin 
+pip install pycurl
