@@ -61,7 +61,14 @@ class Http:
         curl.setopt(pycurl.COOKIEFILE, (r'cookie.txt'))
         curl.setopt(pycurl.COOKIEJAR, (r'cookie.txt'))
         curl.setopt(curl.WRITEFUNCTION, storage.write)
-        curl.perform()
+        success = False;
+        while not(success):
+         try:
+          curl.perform()
+          success = True
+         except pycurl.error:
+          commands.getoutput("terminal-notifier -title 'Lobi : インターネット未接続' -message 'インターネット未接続'")
+          time.sleep(30)
         curl.close()
         content = storage.getvalue()
         return content
@@ -86,7 +93,14 @@ class Http:
         curl.setopt(pycurl.POSTFIELDS,data)
 
         curl.setopt(curl.WRITEFUNCTION, storage.write)
-        curl.perform()
+        success = False;
+        while not(success):
+         try:
+          curl.perform()
+          success = True
+         except pycurl.error:
+          commands.getoutput("terminal-notifier -title 'Lobi : インターネット未接続' -message 'インターネット未接続'")
+          time.sleep(30)
         curl.close()
         content = storage.getvalue()
         return content
